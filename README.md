@@ -1,0 +1,1 @@
+This is a simple database project made by using react.js on the front end and experss.js on the backend. The database used is mysql.
