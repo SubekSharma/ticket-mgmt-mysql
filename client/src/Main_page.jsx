@@ -38,7 +38,7 @@ export default function Main_page() {
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
 
                 </form>
                 <div id="results"></div>

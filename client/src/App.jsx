@@ -13,7 +13,7 @@ function App() {
 							<Route path="/" element={<Main_page />} />
 						</Routes>
 					
-		</Router>
+		</Router>   
   )
 }
 
