@@ -4,7 +4,7 @@ export default function Main_page() {
     return (
         <div>
             <div class="container">
-                <h1>Flight Ticket Booking</h1>
+                <h1>BOOK YOUR NEXT FLIGHT WITH US !</h1>
                 <form>
 
                     <div class="form-group">
