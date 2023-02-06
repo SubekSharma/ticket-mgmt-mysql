@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom"
 import './App.css'
+import './Main_page'
+import Main_page from "./Main_page"
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-    <h1>subek </h1>
-    </>
-      
-        
+    <Router>
+			
+						<Routes>
+							<Route path="/" element={<Main_page />} />
+						</Routes>
+					
+		</Router>
   )
 }
 
