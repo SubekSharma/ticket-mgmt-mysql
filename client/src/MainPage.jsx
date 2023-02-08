@@ -1,11 +1,11 @@
 import React from "react"
 
-export default function Main_page() {
+export default function MainPage() {
     return (
         <div>
             <div class="container">
                 <h1>HELLO THERE, BOOK YOUR NEXT FLIGHT WITH US !</h1>
-                <form>
+                <form method="post" action='http://localhost:3264/api/book'>
 
                     <div class="form-group">
                         <label for="name">Name:</label>

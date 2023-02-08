@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom"
 import './App.css'
-import './Main_page'
-import Main_page from "./Main_page"
+import './MainPage'
+import MainPage from "./MainPage"
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Router>
 			
 						<Routes>
-							<Route path="/" element={<Main_page />} />
+							<Route path="/" element={<MainPage />} />
 						</Routes>
 					
 		</Router>   
