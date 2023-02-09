@@ -1,20 +1,23 @@
-const express  = require("express")
+const express = require("express")
 const app = express()
 const db = require("./db")
+const cors = require('cors')
 
 const port = process.env.PORT || 3264
-app.listen(port, ()=> console.log("listening on port:", port))
+app.listen(port, () => console.log("listening on port:", port))
 
-const BookRoutes=require("./routes/bookTicket")
+const bookRoutes = require("./routes/bookTicketRoute")
 
-app.use("/api/",BookRoutes)
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(cors())
 
-db.connect((err)=>{
+db.connect((err) => {
     if (err) console.log("error connecting to db", err)
     console.log("connected to db successfully!")
 
 })
 // all routes from the rou
-app.use("/", require("./routes"))
+app.use("/api", require("./routes"))
 
 

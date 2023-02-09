@@ -1,8 +1,10 @@
 * {
-	font-family: "Manrope", sans-serif;
-	box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-	list-style-type: none;
+  list-style-type: none;
 }

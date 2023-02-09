@@ -1,15 +1,10 @@
-const express = require("express")
-/**
- * 
- * @param {Express.Request} req 
- * @param {Express.Response} res 
- * @param {*} next 
- */
-const getTicket=async (req,res,next)=>{
-    
-    res.send("hello")
+
+function bookTicket(req, res) {
+    console.log(req.body)
+    res.send({ message: "received" })
+    // res.send(req.body)
 }
 
-module.exports={
-    getTicket
+module.exports = {
+    bookTicket
 }
