@@ -1,4 +1,5 @@
 const router = require("express").Router();
+
 const {
   bookTicket,
 } = require("../controllers/ticketController/bookTicketController");
@@ -11,7 +12,7 @@ const {
 const {
   getAllTickets,
   getTicketById,
-} = require("../controllers/getTicketController");
+} = require("../controllers/ticketController/getTicketController");
 
 router.post("/book", bookTicket);
 router.patch("/update", updateTicket);

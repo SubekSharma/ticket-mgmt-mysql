@@ -1,13 +1,10 @@
-const db = require('../db')
+const db = require("../../db");
 
 function deleteTicket(req, res) {
-    
-    db.query('delete from ticket where ticket_id=?;')
-    res.send({ message: "received" })
-    
+  db.query("delete from ticket where ticket_id=?;");
+  res.send({ message: "received" });
 }
 
 module.exports = {
-    deleteTicket 
-
-} 
+  deleteTicket,
+};
