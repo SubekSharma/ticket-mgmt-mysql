@@ -1,13 +1,13 @@
 const db = require('../db')
 
-function bookTicket(req, res) {
-    console.log(req.body)
-    db.query('insert into ticket(date,time,source,dest,airline,price,user_id) values(?,?,?,?,?,?,?);')
+function updateTicket(req, res) {
+
+    db.query('update ticket set date=?, time=?, source=?, dest=?, airline=?, price=?, user_id=? where ticket_id=?;')
     res.send({ message: "received" })
-    // res.send(req.body)
+    
 }
-// 
+
 module.exports = {
-    bookTicket 
+    updateTicket 
 
 }
