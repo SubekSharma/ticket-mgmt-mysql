@@ -11,6 +11,12 @@ export default function Ticket() {
       <h4>2022-12-04</h4>
       <h5>13:00</h5>
       <h5>Yeti Airlines</h5>
+      <button type="submit" className="btn btn-primary">
+          EDIT
+        </button>
+        <button type="submit" className="btn btn-danger" >
+          DELETE
+        </button>
     </div>
   );
 }
