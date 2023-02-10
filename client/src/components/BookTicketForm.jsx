@@ -33,7 +33,6 @@ export default function BookTicketForm() {
   console.log(formInput);
   return (
     <div className="container">
-      <h1>HELLO THERE, BOOK YOUR NEXT FLIGHT WITH US !</h1>
       <form onSubmit={handleBook}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
