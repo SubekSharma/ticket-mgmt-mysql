@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 export default function BookTicketForm() {
   const [formInput, setFormInput] = useState({
     name: "",
@@ -108,7 +107,7 @@ export default function BookTicketForm() {
           />
         </div>
 
-        <button type="submit" className="btn btn-success">
+        <button type="submit" className="btn btn-success" onSubmit={handleBook}>
           BOOK
         </button>
       </form>

@@ -5,6 +5,7 @@ export default function ViewTickets() {
   return (
     <div>
       <Ticket />
+      <Ticket />
     </div>
   );
 }
