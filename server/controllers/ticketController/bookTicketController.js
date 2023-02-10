@@ -8,9 +8,9 @@ async function bookTicket(req, res) {
   console.log("body:", req.body);
 
   // add user to user table
-  addUserDetails(name, ticket_id)
-    .then((res) => console.log(res))
-    .catch((error) => console.error(error));
+  await addUserDetails(name, ticket_id);
+  // .then((res) => console.log(res))
+  // .catch((error) => console.error(error));
 
   // add ticket to ticket table
   db.query(

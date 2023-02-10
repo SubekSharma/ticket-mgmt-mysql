@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
 
 export default function EditTicketForm() {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [formInput, setFormInput] = useState({
     name: "",
     source: "",
@@ -8,7 +11,17 @@ export default function EditTicketForm() {
     airline: "",
     date: "",
     time: "",
+    price: "",
   });
+
+  useEffect(() => {
+    fetch(`http://localhost:3264/api/ticket/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFormInput(data);
+      });
+  }, []);
 
   function handleInput(event) {
     const name = event.target.name;
@@ -16,26 +29,27 @@ export default function EditTicketForm() {
     setFormInput((prevFormInput) => ({ ...prevFormInput, [name]: value }));
   }
 
-  function handleBook(event) {
+  function handleUpdate(event) {
     event.preventDefault();
     const formData = formInput;
-    // console.log("submitted", new FormData(event.target));
-    fetch(`http://localhost:3264/api/book`, {
-      method: "POST",
+    console.log("edited", formData);
+    fetch(`http://localhost:3264/api/ticket/${id}`, {
+      method: "PATCH",
       body: JSON.stringify(formData),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch("Error motherfuclererrr!!");
+      // .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+      })
+      .catch("Error editing ticket!");
   }
-  console.log(formInput);
   return (
     <div className="container">
-      <h1>HELLO THERE, BOOK YOUR NEXT FLIGHT WITH US !</h1>
-      <form onSubmit={handleBook}>
+      <form onSubmit={handleUpdate}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
@@ -45,6 +59,7 @@ export default function EditTicketForm() {
             onChange={handleInput}
             name="name"
             value={formInput.name}
+            required
           />
         </div>
 
@@ -57,6 +72,7 @@ export default function EditTicketForm() {
             onChange={handleInput}
             name="source"
             value={formInput.source}
+            required
           />
         </div>
 
@@ -69,6 +85,7 @@ export default function EditTicketForm() {
             onChange={handleInput}
             name="destination"
             value={formInput.destination}
+            required
           />
         </div>
 
@@ -80,7 +97,8 @@ export default function EditTicketForm() {
             id="date"
             onChange={handleInput}
             name="date"
-            value={formInput.date}
+            value={formInput.date.split("T")[0]}
+            required
           />
         </div>
 
@@ -93,6 +111,7 @@ export default function EditTicketForm() {
             onChange={handleInput}
             name="time"
             value={formInput.time}
+            required
           />
         </div>
 
@@ -105,11 +124,25 @@ export default function EditTicketForm() {
             onChange={handleInput}
             name="airline"
             value={formInput.airline}
+            required
           />
         </div>
 
-        <button type="submit" className="btn btn-success">
-          SAVE  
+        <div className="form-group">
+          <label htmlFor="price">Price:</label>
+          <input
+            type="number"
+            className="form-control"
+            id="price"
+            onChange={handleInput}
+            name="price"
+            value={formInput.price}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn btn-success my-2">
+          SAVE
         </button>
       </form>
     </div>

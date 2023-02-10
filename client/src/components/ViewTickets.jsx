@@ -8,7 +8,7 @@ export default function ViewTickets() {
     fetch("http://localhost:3264/api/ticket")
       .then((res) => res.json())
       .then((data) => setTickets(data));
-  }, []);
+  });
 
   const ticketsEl = tickets.map((ticket, index) => (
     <Ticket key={index} data={ticket} />

@@ -4,8 +4,8 @@ function getTicketById(req, res) {
   const { id } = req.params;
   // console.log(id);
   db.query(
-    "SELECT * FROM ticket JOIN user WHERE ticket.ticket_id = ?;",
-    id,
+    "SELECT * FROM ticket JOIN user WHERE ticket.ticket_id = ? && user.ticket_id= ?;",
+    [id, id],
     (error, result) => {
       if (error) res.status(500).json({ message: error });
       if (!result.length) res.status(404).send({ message: "Not Found!!" });

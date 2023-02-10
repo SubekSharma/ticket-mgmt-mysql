@@ -1,15 +1,18 @@
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import "./pages/MainPage";
+import EditTicketForm from "./components/EditTicketForm";
 import MainPage from "./pages/MainPage";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-      </Routes>
-    </Router>
+    <div style={{ backgroundColor: "rgba(0,0,0,0.25)" }}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/edit-ticket/:id" element={<EditTicketForm />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

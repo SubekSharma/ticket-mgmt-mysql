@@ -15,8 +15,8 @@ const {
 } = require("../controllers/ticketController/getTicketController");
 
 router.post("/book", bookTicket);
-router.patch("/update", updateTicket);
-router.delete("/delete", deleteTicket);
+router.patch("/:id", updateTicket);
+router.delete("/:id", deleteTicket);
 router.get("/", getAllTickets);
 router.get("/:id", getTicketById);
 
