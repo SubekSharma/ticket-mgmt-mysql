@@ -29,7 +29,7 @@ export default function BookTicketForm() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
-      .catch("Error motherfuclererrr!!");
+      .catch("Error!!");
   }
   console.log(formInput);
   return (
