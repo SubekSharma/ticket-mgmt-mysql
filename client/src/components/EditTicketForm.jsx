@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function BookTicketForm() {
+export default function EditTicketForm() {
   const [formInput, setFormInput] = useState({
     name: "",
     source: "",
@@ -109,7 +109,7 @@ export default function BookTicketForm() {
         </div>
 
         <button type="submit" className="btn btn-success">
-          SAVE
+          SAVE  
         </button>
       </form>
     </div>

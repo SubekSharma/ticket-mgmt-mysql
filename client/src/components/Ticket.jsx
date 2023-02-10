@@ -12,10 +12,10 @@ export default function Ticket() {
       <h5>13:00</h5>
       <h5>Yeti Airlines</h5>
       <button type="submit" className="btn btn-primary">
-          EDIT
+         Edit
         </button>
         <button type="submit" className="btn btn-danger" >
-          DELETE
+          Delete
         </button>
     </div>
   );
