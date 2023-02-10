@@ -1,7 +1,13 @@
 const router = require("express").Router();
-const { bookTicket } = require("../controllers/bookController");
-const { deleteTicket } = require("../controllers/deleteController");
-const { updateTicket } = require("../controllers/updateController");
+const {
+  bookTicket,
+} = require("../controllers/ticketController/bookTicketController");
+const {
+  deleteTicket,
+} = require("../controllers/ticketController/deleteTicketController");
+const {
+  updateTicket,
+} = require("../controllers/ticketController/updateTicketController");
 const {
   getAllTickets,
   getTicketById,

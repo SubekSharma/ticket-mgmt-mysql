@@ -1,4 +1,4 @@
-const db = require("../db");
+const db = require("../../db");
 
 async function bookTicket(req, res) {
   console.log(req.body);
@@ -12,6 +12,7 @@ async function bookTicket(req, res) {
     .then((res) => console.log(res))
     .catch((error) => console.error(error));
 
+  // add ticket to ticket table
   db.query(
     "INSERT INTO ticket(ticket_id, date, time, source, destination, airline, price) values(?,?,?,?,?,?,?);",
     [ticket_id, date, time, source, destination, airline, price],
@@ -26,7 +27,7 @@ async function bookTicket(req, res) {
 function addUserDetails(name, ticket_id) {
   return new Promise((resolve, reject) => {
     db.query(
-      "INSERT INTO user(full_name, ticket_id) VALUES(?,?);",
+      "INSERT INTO user(name, ticket_id) VALUES(?,?);",
       [name, ticket_id],
       (error, result) => {
         if (error) reject("Error creating user", error);
