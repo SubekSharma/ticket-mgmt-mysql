@@ -1,12 +1,6 @@
-const router = require('express').Router()
-const bookTicketRoute = require("./bookTicketRoute")
-const updateTicketRoute = require("./updateTicketRoute")
-const deleteTicketRoute = require("./deleteTicketRoute")
+const router = require("express").Router();
+const ticketRoutes = require("./ticketRoutes");
 
+router.use("/ticket", ticketRoutes);
 
-router.use("/book", bookTicketRoute)
-router.use("/update", updateTicketRoute)
-router.use("/delete", deleteTicketRoute)
-
-
-module.exports = router
+module.exports = router;

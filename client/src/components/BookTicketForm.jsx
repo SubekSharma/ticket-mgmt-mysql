@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
+
 export default function BookTicketForm() {
-  const [formInput, setFormInput] = useState({
+  const emptyForm = {
     name: "",
     source: "",
     destination: "",
     airline: "",
     date: "",
     time: "",
-  });
+    price: "",
+  };
+
+  const [formInput, setFormInput] = useState(emptyForm);
 
   function handleInput(event) {
     const name = event.target.name;
@@ -18,19 +23,24 @@ export default function BookTicketForm() {
   function handleBook(event) {
     event.preventDefault();
     const formData = formInput;
-    // console.log("submitted", new FormData(event.target));
-    fetch(`http://localhost:3264/api/book`, {
+    formData.ticket_id = nanoid();
+    console.log("submitted", formData);
+    fetch(`http://localhost:3264/api/ticket/book`, {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.clear();
+        console.log(data);
+        setFormInput(emptyForm);
+      })
+
       .catch("Error!!");
   }
-  console.log(formInput);
+  // console.log(formInput);
   return (
     <div className="container">
       <form onSubmit={handleBook}>
@@ -43,6 +53,7 @@ export default function BookTicketForm() {
             onChange={handleInput}
             name="name"
             value={formInput.name}
+            required
           />
         </div>
 
@@ -55,6 +66,7 @@ export default function BookTicketForm() {
             onChange={handleInput}
             name="source"
             value={formInput.source}
+            required
           />
         </div>
 
@@ -67,6 +79,7 @@ export default function BookTicketForm() {
             onChange={handleInput}
             name="destination"
             value={formInput.destination}
+            required
           />
         </div>
 
@@ -79,6 +92,7 @@ export default function BookTicketForm() {
             onChange={handleInput}
             name="date"
             value={formInput.date}
+            required
           />
         </div>
 
@@ -91,6 +105,7 @@ export default function BookTicketForm() {
             onChange={handleInput}
             name="time"
             value={formInput.time}
+            required
           />
         </div>
 
@@ -103,6 +118,20 @@ export default function BookTicketForm() {
             onChange={handleInput}
             name="airline"
             value={formInput.airline}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="price">Price:</label>
+          <input
+            type="number"
+            className="form-control"
+            id="price"
+            onChange={handleInput}
+            name="price"
+            value={formInput.price}
+            required
           />
         </div>
 

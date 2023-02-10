@@ -2,38 +2,22 @@ const db = require("../db");
 
 async function bookTicket(req, res) {
   console.log(req.body);
-  const { name, source, destination, airline, date, time } = req.body;
-  //add user in user table
-  // get new user id
-  // set new user id in ticket table
+  const { ticket_id, name, source, destination, airline, date, time, price } =
+    req.body;
 
-  //   get the ticket id which is going to be created
-  let ticket_id;
-  try {
-    ticket_id = await getNewTicketId();
-  } catch (error) {
-    console.log(error);
-  }
+  console.log("body:", req.body);
 
   // add user to user table
   addUserDetails(name, ticket_id)
     .then((res) => console.log(res))
     .catch((error) => console.error(error));
 
-  // find id from user table of just created user
-  let user_id;
-  try {
-    user_id = await getUserId(name);
-  } catch (error) {
-    console.log(error);
-  }
-
   db.query(
-    "INSERT INTO ticket(date,time,source,dest,airline,price,user_id) values(?,?,?,?,?,?,?);",
-    [date, time, source, destination, airline, price, user_id],
+    "INSERT INTO ticket(ticket_id, date, time, source, destination, airline, price) values(?,?,?,?,?,?,?);",
+    [ticket_id, date, time, source, destination, airline, price],
     (error, result) => {
-      if (error) res.status(500).send({ message: error });
-      res.send({ message: result });
+      if (error) res.status(500).json({ message: error });
+      res.json({ message: result });
     }
   );
 }
@@ -49,31 +33,6 @@ function addUserDetails(name, ticket_id) {
         resolve(result);
       }
     );
-  });
-}
-
-// find user id of newly created user
-function getUserId(name) {
-  return new Promise((resolve, reject) =>
-    db.query(
-      "SELECT user_id FROM user WHERE full_name = ?;",
-      name,
-      (error, result) => {
-        if (error) reject(error);
-        if (!result.length) reject("User not found!");
-        console.log(result);
-        resolve(result[0].user_id);
-      }
-    )
-  );
-}
-
-function getNewTicketId() {
-  return new Promise((resolve, reject) => {
-    db.query("SELECT MAX(ticket_id) FROM ticket;", (error, result) => {
-      if (error) reject(error);
-      resolve(result[0].ticket_id + 1);
-    });
   });
 }
 
