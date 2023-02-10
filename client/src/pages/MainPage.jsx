@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 export default function MainPage() {
   return (
-    <>
+    <div className="container">
       <div className="w-50">
         <Header />
       </div>
@@ -17,6 +17,6 @@ export default function MainPage() {
           <ViewTickets />
         </div>
       </div>
-    </>
+    </div>
   );
 }
