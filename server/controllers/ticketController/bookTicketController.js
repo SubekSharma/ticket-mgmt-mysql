@@ -23,7 +23,7 @@ async function bookTicket(req, res) {
   );
 }
 
-// add user to table
+// add user to user table
 function addUserDetails(name, ticket_id) {
   return new Promise((resolve, reject) => {
     db.query(

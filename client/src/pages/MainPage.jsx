@@ -6,7 +6,7 @@ import BookTicketForm from "../components/BookTicketForm";
 export default function MainPage() {
   return (
     <div className="container">
-      <Header className="align-centre"/>
+      <Header/>
       <div className="d-flex justify-content-between">
         <div
           className="w-25 my-4 position-fixed"
